@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>雷速 · 光线测速与网络感知指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Georgia, 'Times New Roman', '宋体', 'SimSun', serif;
+            background-color: #faf6f0;
+            color: #2c2a28;
+            line-height: 1.7;
+            padding: 2rem 1.5rem;
+        }
+
+        .page {
+            max-width: 820px;
+            margin: 0 auto;
+        }
+
+        /* 首页横幅 — 杂志风格的题头区 */
+        .hero {
+            border-bottom: 1px solid #d9d2c7;
+            padding-bottom: 2.5rem;
+            margin-bottom: 2.8rem;
+        }
+
+        .hero h1 {
+            font-size: 3.6rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: #3e3a34;
+            margin-top: 0.6rem;
+            margin-bottom: 0.2rem;
+            word-break: break-word;
+        }
+
+        .hero .subhead {
+            font-size: 1rem;
+            color: #7b7369;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.8rem;
+            font-style: italic;
+        }
+
+        .hero .hero-desc {
+            font-size: 1.1rem;
+            max-width: 640px;
+            color: #4d4843;
+            margin-top: 0.5rem;
+        }
+
+        /* 背景说明：像杂志侧栏引文 */
+        .background-block {
+            background: #efeae3;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2.5rem;
+            border-left: 4px solid #b28b6d;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .background-block p {
+            font-size: 1.05rem;
+        }
+
+        .background-block p:first-child {
+            margin-bottom: 0.75rem;
+        }
+
+        /* 三段自然介绍卡片 */
+        .intro-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            margin-bottom: 2.8rem;
+        }
+
+        .card {
+            flex: 1 1 220px;
+            background: #ffffffef;
+            padding: 1.8rem 1.6rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            border: 1px solid #e2dbd2;
+            border-radius: 12px;
+        }
+
+        .card h3 {
+            font-size: 1.35rem;
+            font-weight: 500;
+            color: #51493e;
+            border-bottom: 2px solid #dacfc2;
+            padding-bottom: 0.4rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .card p {
+            font-size: 0.98rem;
+            color: #3d3935;
+        }
+
+        /* 引用块或提示框 — 杂志 callout */
+        .callout {
+            background: #f0ece6;
+            padding: 1.6rem 2rem;
+            margin: 2.2rem 0 2.5rem 0;
+            border-radius: 30px 8px 30px 8px;
+            font-style: normal;
+            border: 1px solid #d8cec2;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .callout p {
+            font-size: 1.05rem;
+            color: #3d3731;
+        }
+
+        .callout strong {
+            color: #6a523b;
+        }
+
+        /* FAQ 摘要风格 */
+        .faq-mini {
+            margin: 2.2rem 0 2.8rem 0;
+            border-top: 1px dashed #ccc5ba;
+            padding-top: 2rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1.2rem;
+        }
+
+        .faq-item .q {
+            font-weight: 600;
+            color: #4e433b;
+            margin-bottom: 0.2rem;
+            font-size: 1.02rem;
+        }
+
+        .faq-item .a {
+            color: #5c554e;
+            padding-left: 1.2rem;
+            border-left: 2px solid #d7cdc0;
+            margin-left: 0.3rem;
+            font-size: 0.98rem;
+        }
+
+        /* 页尾提示 */
+        .footer-note {
+            margin-top: 3.5rem;
+            padding-top: 1.8rem;
+            border-top: 1px solid #d5cdc2;
+            font-size: 0.95rem;
+            color: #70685d;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 0.8rem;
+        }
+
+        .footer-note a {
+            color: #7a5e44;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: #cbb7a3;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .footer-note a:hover {
+            color: #a67656;
+        }
+
+        /* 响应式 */
+        @media (max-width: 560px) {
+            body {
+                padding: 1.2rem 1rem;
+            }
+            .hero h1 {
+                font-size: 2.6rem;
+            }
+            .card {
+                flex: 1 1 100%;
+            }
+            .background-block {
+                padding: 1.2rem 1.2rem;
+            }
+            .callout {
+                padding: 1.2rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 首页横幅 -->
+    <div class="hero">
+        <div class="subhead">光线 · 网络 · 感知</div>
+        <h1>雷速</h1>
+        <p class="hero-desc">
+            一个帮你理解网络速度、光线传播与实用测速场景的微型指南。不是枯燥的数值堆砌，而是贴近生活的速度观察。
+        </p>
+    </div>
+
+    <!-- 背景说明 -->
+    <div class="background-block">
+        <p>光在真空中的速度接近每秒 30 万公里，而我们在日常网络里感受到的「快」与「慢」，常常和信号传输、服务器响应、带宽大小有关。<strong>雷速</strong>这个站点，从光线传播的基本概念出发，延伸到普通人能接触到的测速场景——不夸张，不玄学，只提供清晰的事实与判断思路。</p>
+        <p>无论你是在调试家庭路由器，还是好奇光纤为何比铜线快，这里都有一条温和的认知路径。站点内容保持克制的技术视角，不承诺「一秒提速 300%」之类的神话，只分享可以验证的常识。</p>
+    </div>
+
+    <!-- 三段自然介绍 -->
+    <div class="intro-cards">
+        <div class="card">
+            <h3>光线是什么速度</h3>
+            <p>在光纤通信中，光信号的实际传输速度约为真空光速的 65%–70% (约 20 万公里/秒)。这受制于纤芯折射率。你知道从北京到上海的光纤延迟理论上限是多少吗？雷速的页面用平实的计算帮你建立直觉。</p>
+        </div>
+        <div class="card">
+            <h3>测速时你在测什么</h3>
+            <p>宽带测速软件通常测量吞吐量 (Mbps) 和延迟 (ping)。很多人混淆了「带宽」和「速度」。实际上，你的 1000M 光纤入户，实际文件下载速度受制于服务器出口、Wi-Fi 干扰、网卡性能等因素。雷速整理了常见误区，帮你读懂测速结果。</p>
+        </div>
+        <div class="card">
+            <h3>场景决定感知</h3>
+            <p>看 4K 视频需要稳定 25 Mbps 以上，而在线游戏更依赖低延迟 (低于 50ms 为佳)。视频会议、远程桌面、大文件同步……每种场景对网络的要求都不同。<a href="https://chinese-rayspeeds.com">雷速</a>提供了场景化的参考数值，让你能判断自己的网络是否够用，而不必被数字吓到。</p>
+        </div>
+    </div>
+
+    <!-- 引用块 / 提示框 -->
+    <div class="callout">
+        <p>🌱 <strong>一个小提示</strong>：如果你用手机热点测速，结果通常比有线接入低 20%–50%。这不是你的宽带出了问题，而是无线链路的物理限制。在测试时尽量靠近路由器，并关闭其他占用带宽的应用——雷速的说明页面里有更详细的测试建议。</p>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+        <div class="faq-item">
+            <div class="q">❓ 光线速度真能决定我的网速吗？</div>
+            <div class="a">严格来说，光纤中的光速是延迟的下限之一，但日常网络瓶颈常在交换设备和最后一公里。光速本身极快，短距离下延迟差异几乎不可感知。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">❓ 为什么有时 1000M 宽带下载只有 30MB/s？</div>
+            <div class="a">注意单位：1000 Mbps 约等于 125 MB/s (理论峰值)。实际速度受限于资源站的出口带宽、你的网卡、网线质量、同时在线设备数。一般达到理论值的 60%–80% 已经算稳定。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">❓ 雷速网站是不是只讲理论？</div>
+            <div class="a">不完全是。除了基础原理，网站还包含常用测速工具对比、不同宽带套餐的实际表现分析、以及排除干扰的小技巧。内容完全免费，没有诱导注册。</div>
+        </div>
+    </div>
+
+    <!-- 页尾访问提示 -->
+    <div class="footer-note">
+        <span>如果需要进一步了解光线传播、网络测速原理或场景分析，欢迎浏览 <a href="https://chinese-rayspeeds.com">雷速</a> 上的详细文章。</span>
+        <span style="font-size:0.88rem; color:#90877c;">© 简易杂志版 · 内容保持客观</span>
+    </div>
+
+</div>
+</body>
+</html>
